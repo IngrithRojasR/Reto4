@@ -33,12 +33,15 @@ public class MessageService {
             }
         }
     }
+
     public Message update(Message message){
         if(message.getIdMessage()!=null){
             Optional<Message> e= messageRepository.getMessage(message.getIdMessage());
             if(!e.isEmpty()){
                 if(message.getMessageText()!=null){
                     e.get().setMessageText(message.getMessageText());
+                    e.get().setClient(message.getClient());
+                    e.get().setDoctor(message.getDoctor());
                 }
                 messageRepository.save(e.get());
                 return e.get();

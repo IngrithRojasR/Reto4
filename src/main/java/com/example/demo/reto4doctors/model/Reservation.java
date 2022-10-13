@@ -14,7 +14,7 @@ public class Reservation {
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status="created";
+    private String status = "created";
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -23,7 +23,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
     private String score;
@@ -60,13 +60,6 @@ public class Reservation {
         this.status = status;
     }
 
-    public Doctor getMachine() {
-        return doctor;
-    }
-
-    public void setMachine(Doctor doctor) {
-        this.doctor = doctor;
-    }
 
     public Client getClient() {
         return client;

@@ -13,21 +13,21 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String email;
-    private Integer age;
-    private  String description;
+    private String department;
+    private Integer year;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "specialtyId")
-    @JsonIgnoreProperties("machines")
+    @JsonIgnoreProperties("doctors")
     private Specialty specialty;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","client"})
+    @JsonIgnoreProperties({"doctor", "client"})
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","messages"})
+    @JsonIgnoreProperties({"doctor", "messages"})
     public List<Reservation> reservations;
 
     public Integer getId() {
@@ -46,21 +46,22 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setYear(Integer year) {
+        this.year = year;
     }
+
 
     public String getDescription() {
         return description;

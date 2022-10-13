@@ -18,6 +18,22 @@ public class Message {
     @JsonIgnoreProperties({"messages","reservations"})
     private Doctor doctor;
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     @ManyToOne
     @JoinColumn(name="clientId")
     @JsonIgnoreProperties({"messages","reservations"})
@@ -37,22 +53,6 @@ public class Message {
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
-    }
-
-    public Doctor getMachine() {
-        return doctor;
-    }
-
-    public void setMachine(Doctor machine) {
-        this.doctor = machine;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
 

@@ -41,11 +41,11 @@ public class DoctorService {
                 if(doctor.getName()!=null){
                     e.get().setName(doctor.getName());
                 }
-                /*if(doctor.getBrand()!=null){
-                    e.get().setBrand(machine.getBrand());
-                }*/
-                if(doctor.getAge()!=null){
-                    e.get().setAge(doctor.getAge());
+                if(doctor.getDepartment()!=null){
+                    e.get().setDepartment(doctor.getDepartment());
+                }
+                if(doctor.getYear()!=null){
+                    e.get().setYear(doctor.getYear());
                 }
                 if(doctor.getDescription()!=null){
                     e.get().setDescription(doctor.getDescription());

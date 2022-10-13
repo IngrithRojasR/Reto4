@@ -23,7 +23,7 @@ public class SpecialtyService {
 
     public Specialty save(Specialty specialty){
         if(specialty.getId()==null){
-            System.out.println(specialty.getId()+" ****** "+specialty.toString());
+            //System.out.println(specialty.getId()+" ****** "+specialty.toString());
             return specialtyRepository.save(specialty);
         }else{
             Optional<Specialty> specialty1 = specialtyRepository.getSpecialty(specialty.getId());
