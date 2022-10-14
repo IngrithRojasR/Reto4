@@ -47,6 +47,8 @@ public class ReservationService {
                 }
                 if(reservation.getStatus()!=null){
                     e.get().setStatus(reservation.getStatus());
+                    e.get().setDoctor(reservation.getDoctor());
+                    e.get().setClient(reservation.getClient());
                 }
                 reservationRepository.save(e.get());
                 return e.get();
@@ -59,7 +61,7 @@ public class ReservationService {
     }
 
 
-    public boolean deleteReservation (int id){
+    public boolean delete(Integer id){
         Boolean d = getReservation(id).map(reservation -> {
             reservationRepository.delete(reservation);
             return true;

@@ -32,16 +32,16 @@ public class DoctorController {
         return doctorService.save(doctor);
     }
 
-    @PostMapping("/update")
+    @PutMapping ("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Doctor update(@RequestBody Doctor doctor){
         return doctorService.update(doctor);
     }
 
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public boolean delete(@PathVariable("id") Integer id){
-        return doctorService.deleteDoctor(id);
+    @DeleteMapping("{idDoctor}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("idDoctor") Integer idDoctor){
+        return doctorService.delete(idDoctor);
     }
 
 

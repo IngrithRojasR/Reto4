@@ -64,9 +64,8 @@ public class DoctorService {
     }
 
 
-
-    public boolean deleteDoctor (int id){
-        Boolean d = getDoctor(id).map(doctor -> {
+    public boolean delete(Integer idDoctor){
+        Boolean d = getDoctor(idDoctor).map(doctor -> {
             doctorRepository.delete(doctor);
             return true;
         }).orElse(false);
