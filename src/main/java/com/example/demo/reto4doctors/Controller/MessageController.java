@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/message")
+@RequestMapping("/api/Message")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 
 public class MessageController {
     @Autowired
@@ -21,9 +22,9 @@ public class MessageController {
         return messageService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Message> getMessage(@PathVariable("id") int messageId) {
-        return messageService.getMessage(messageId);
+    @GetMapping("/{idMessage}")
+    public Optional<Message> getMessage(@PathVariable("idMessage") Integer idMessage) {
+        return messageService.getMessage(idMessage);
     }
 
     @PostMapping("/save")
@@ -38,9 +39,9 @@ public class MessageController {
         return messageService.update(message);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idMessage}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id){
-        return messageService.deleteMessage(id);
+    public boolean delete(@PathVariable("idMessage") Integer idMessage){
+        return messageService.deleteMessage(idMessage);
     }
 }

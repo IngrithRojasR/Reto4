@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/client")
-
+@RequestMapping("/api/Client")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ClientController {
     @Autowired
     private ClientService clientService;
@@ -22,7 +22,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Client> getClient(@PathVariable("id") int clientId) {
+    public Optional<Client> getClient(@PathVariable("id") Integer clientId) {
         return clientService.getClient(clientId);
     }
 
@@ -39,9 +39,9 @@ public class ClientController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idClient}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id){
-        return clientService.deleteClient(id);
+    public boolean delete(@PathVariable("idClient") Integer idClient){
+        return clientService.deleteClient(idClient);
     }
 }

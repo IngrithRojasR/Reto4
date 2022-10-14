@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/doctor")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/Doctor")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 public class DoctorController {
     @Autowired
     private DoctorService doctorService;
@@ -22,8 +22,8 @@ public class DoctorController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Doctor> getDoctor(@PathVariable("id") int doctorId){
-        return doctorService.getDoctor(doctorId);
+    public Optional<Doctor> getDoctor(@PathVariable("id") Integer id){
+        return doctorService.getDoctor(id);
     }
 
     @PostMapping("/save")
@@ -40,7 +40,7 @@ public class DoctorController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean delete(@PathVariable("id") int id){
+    public boolean delete(@PathVariable("id") Integer id){
         return doctorService.deleteDoctor(id);
     }
 

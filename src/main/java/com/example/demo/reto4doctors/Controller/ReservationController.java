@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/reservation")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/Reservation")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST, RequestMethod.DELETE})
 
 public class ReservationController {
     @Autowired
@@ -22,9 +22,9 @@ public class ReservationController {
         return reservationService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Reservation> getReservation(@PathVariable("id") int reservationId) {
-        return reservationService.getReservation(reservationId);
+    @GetMapping("/{idReservation}")
+    public Optional<Reservation> getReservation(@PathVariable("idReservation") Integer idReservation ) {
+        return reservationService.getReservation(idReservation);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,10 +38,10 @@ public class ReservationController {
         return reservationService.update(reservation);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idReservation}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id){
-        return reservationService.deleteReservation(id);
+    public boolean delete(@PathVariable("{/idReservation}") Integer idReservation){
+        return reservationService.deleteReservation(idReservation);
     }
 
 }
