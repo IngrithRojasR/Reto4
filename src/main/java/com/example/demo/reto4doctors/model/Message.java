@@ -3,10 +3,11 @@ package com.example.demo.reto4doctors.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "message")
-public class Message {
+public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
@@ -14,8 +15,8 @@ public class Message {
 
 
     @ManyToOne
-    @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JoinColumn(name="idDoctor")
+    @JsonIgnoreProperties({"messages","client","reservations"})
     private Doctor doctor;
 
     public Doctor getDoctor() {
@@ -36,7 +37,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"messages","client","reservations"})
     private Client client;
 
     public Integer getIdMessage() {

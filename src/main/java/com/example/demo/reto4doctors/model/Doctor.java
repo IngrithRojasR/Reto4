@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "doctor")
-public class Doctor {
+public class Doctor implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,7 +27,7 @@ public class Doctor {
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor", "messages"})
+    @JsonIgnoreProperties({"doctor", "client"})
     public List<Reservation> reservations;
 
     public Integer getId() {
