@@ -18,7 +18,7 @@ public class Reservation implements Serializable {
     private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idDoctor")
     @JsonIgnoreProperties("reservations")
     private Doctor doctor;
 
@@ -26,6 +26,14 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     private String score;
 
