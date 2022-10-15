@@ -40,6 +40,11 @@ public class ReservationController {
         return reservationService.update(reservation);
     }
 
+    /**
+     * A partir de este EndPoint, comprende el reto 5
+     * @param idReservation
+     * @return
+     */
     @DeleteMapping("/{idReservation}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("idReservation") Integer idReservation){
