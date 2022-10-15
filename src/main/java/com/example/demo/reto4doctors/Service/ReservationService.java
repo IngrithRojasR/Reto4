@@ -100,6 +100,7 @@ public class ReservationService {
         }else{
             return new ArrayList<>();
         }
+
     }
 
     public List<ClientReport> getTopClients(){

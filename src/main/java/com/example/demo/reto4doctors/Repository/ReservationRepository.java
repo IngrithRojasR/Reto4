@@ -5,6 +5,7 @@ import com.example.demo.reto4doctors.model.Client;
 import com.example.demo.reto4doctors.model.ClientReport;
 import com.example.demo.reto4doctors.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @Repository
 public class ReservationRepository {
     @Autowired
+    @Qualifier("france")
     private ReservationInterface reservationCrudRepository;
 
     public List<Reservation> getAll() {
@@ -38,7 +40,7 @@ public class ReservationRepository {
     }
 
     public List<Reservation> getReservationPeriod(Date dateOne, Date dateTwo){
-        return reservationCrudRepository.findAllByStarDateAfterAndStarDateBefore(dateOne, dateTwo);
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(dateOne, dateTwo);
 
     }
 
@@ -50,4 +52,5 @@ public class ReservationRepository {
         }
         return response;
     }
+
 }
