@@ -1,7 +1,9 @@
 package com.example.demo.reto4doctors.Controller;
 
 import com.example.demo.reto4doctors.Service.ReservationService;
+import com.example.demo.reto4doctors.model.ClientReport;
 import com.example.demo.reto4doctors.model.Reservation;
+import com.example.demo.reto4doctors.model.ReservationReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -44,4 +46,18 @@ public class ReservationController {
         return reservationService.delete(idReservation);
     }
 
+    @GetMapping("/report-status")
+    public ReservationReport getReservationStatusReport(){
+        return reservationService.getReservationStatusReport();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne,dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<ClientReport> getClients(){
+        return reservationService.getTopClients();
+    }
 }
